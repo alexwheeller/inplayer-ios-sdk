@@ -4,7 +4,7 @@ import Foundation
 public struct LivestreamAsset: Codable, AssetJSONDecoder {
     
     public let accountId: String
-    public let eventId: String
+    public let eventId: Int
     public let videoId: String
     
     enum CodingKeys: String, CodingKey {
@@ -17,7 +17,7 @@ public struct LivestreamAsset: Codable, AssetJSONDecoder {
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         accountId = try values.decode(String.self, forKey: .accountId)
-        eventId = try values.decode(String.self, forKey: .eventId)
+        eventId = try values.decode(Int.self, forKey: .eventId)
         videoId = try values.decode(String.self, forKey: .videoId)
     }
 }
